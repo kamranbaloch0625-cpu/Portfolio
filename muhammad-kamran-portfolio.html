@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Kamran — Automation Expert</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:#FAF7F2; --warm:#F5EFE4; --brown:#3D2B1F; --mid:#7A5C4A;
+  --light:#B89B88; --accent:#C8622A; --accent2:#2A7C62; --accent3:#2A5F8F;
+  --border:rgba(61,43,31,0.12); --card:#FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--brown);font-family:'Inter',sans-serif;font-weight:400;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(250,247,242,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Lora',serif;font-size:1.15rem;font-weight:600;color:var(--brown)}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:0.8rem;font-weight:500;color:var(--mid);text-decoration:none;letter-spacing:0.07em;text-transform:uppercase;transition:color .25s}
+.nav-links a:hover{color:var(--accent)}
+
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 400px;align-items:center;gap:60px;padding:120px 60px 80px;position:relative;overflow:hidden}
+.blob{position:absolute;border-radius:60% 40% 70% 30% / 50% 60% 40% 70%;opacity:0.4;pointer-events:none}
+.blob1{width:480px;height:480px;background:#EEDBC8;top:-80px;right:-120px;animation:morph1 12s ease-in-out infinite}
+.blob2{width:300px;height:300px;background:#C8DDD4;bottom:40px;left:-60px;animation:morph2 15s ease-in-out infinite}
+@keyframes morph1{0%,100%{border-radius:60% 40% 70% 30% / 50% 60% 40% 70%}50%{border-radius:30% 70% 40% 60% / 70% 30% 60% 40%}}
+@keyframes morph2{0%,100%{border-radius:50% 50% 60% 40% / 40% 60% 50% 50%}50%{border-radius:70% 30% 40% 60% / 60% 40% 70% 30%}}
+
+.hero-left{position:relative;z-index:2}
+.hero-greeting{display:inline-flex;align-items:center;gap:8px;font-size:0.78rem;font-weight:500;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:riseUp .7s ease .1s forwards}
+.wave{display:inline-block;animation:waveAnim 2.5s ease-in-out infinite;transform-origin:70% 70%;font-size:1rem}
+@keyframes waveAnim{0%,100%{transform:rotate(0deg)}20%{transform:rotate(20deg)}40%{transform:rotate(-10deg)}60%{transform:rotate(15deg)}80%{transform:rotate(-5deg)}}
+.hero-name{font-family:'Lora',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:600;line-height:1.1;letter-spacing:-0.01em;margin-bottom:6px;color:var(--brown);opacity:0;animation:riseUp .7s ease .25s forwards}
+.hero-name em{font-style:italic;color:var(--accent)}
+.hero-subtitle{font-family:'Lora',serif;font-size:1.05rem;font-weight:400;font-style:italic;color:var(--mid);margin-bottom:28px;opacity:0;animation:riseUp .7s ease .4s forwards}
+.hero-bio{font-size:1rem;line-height:1.8;color:var(--mid);max-width:500px;margin-bottom:36px;font-weight:300;opacity:0;animation:riseUp .7s ease .55s forwards}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:riseUp .7s ease .7s forwards}
+.btn-main{padding:13px 28px;background:var(--accent);color:#fff;font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border-radius:50px;transition:transform .2s,box-shadow .2s,background .2s;box-shadow:0 4px 20px rgba(200,98,42,0.3)}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,98,42,0.4);background:#B5551F}
+.btn-ghost{padding:13px 28px;border:1.5px solid var(--border);color:var(--brown);font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border-radius:50px;transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+.hero-card{background:var(--card);border-radius:28px;border:1px solid var(--border);padding:36px 28px;position:relative;z-index:2;box-shadow:0 12px 48px rgba(61,43,31,0.08);opacity:0;animation:riseUp .8s ease .5s forwards}
+.avatar-wrap{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#EEDBC8,#C8DDD4);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:'Lora',serif;font-size:1.6rem;font-weight:600;color:var(--accent);border:3px solid #fff;box-shadow:0 4px 16px rgba(61,43,31,0.12)}
+.card-name{font-family:'Lora',serif;font-size:1.15rem;font-weight:600;text-align:center;color:var(--brown);margin-bottom:4px}
+.card-role{font-size:0.72rem;color:var(--light);text-align:center;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:22px}
+.card-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-radius:14px;overflow:hidden;margin-bottom:18px}
+.cstat{background:var(--cream);padding:14px 8px;text-align:center}
+.cstat-num{font-family:'Lora',serif;font-size:1.3rem;font-weight:600;color:var(--accent);display:block;line-height:1}
+.cstat-label{font-size:0.62rem;color:var(--light);text-transform:uppercase;letter-spacing:0.08em;margin-top:3px;display:block}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.tag{font-size:0.68rem;font-weight:500;padding:4px 10px;border-radius:50px;letter-spacing:0.04em}
+.tag-o{background:#FDF0E8;color:var(--accent);border:1px solid #EED4BE}
+.tag-g{background:#E8F4EF;color:var(--accent2);border:1px solid #BDD9CE}
+.tag-b{background:#E8F0F8;color:var(--accent3);border:1px solid #BDCEE0}
+
+section{padding:90px 60px}
+.sec-eyebrow{font-size:0.72rem;font-weight:600;color:var(--accent);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px}
+.sec-title{font-family:'Lora',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:600;line-height:1.2;color:var(--brown);margin-bottom:50px;letter-spacing:-0.01em}
+.sec-title em{font-style:italic;color:var(--accent)}
+
+#about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start}
+.about-text p{font-size:1rem;line-height:1.85;color:var(--mid);margin-bottom:18px;font-weight:300}
+.about-text p strong{color:var(--brown);font-weight:500}
+.about-text blockquote{border-left:3px solid var(--accent);padding-left:18px;margin:28px 0;font-family:'Lora',serif;font-style:italic;font-size:1.05rem;color:var(--mid);line-height:1.7}
+.tools-label{font-size:0.72rem;font-weight:600;color:var(--light);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:16px}
+.tools-list{display:flex;flex-direction:column;gap:10px}
+.tool-row{display:flex;align-items:center;gap:14px;padding:12px 16px;background:var(--cream);border-radius:12px;border:1px solid var(--border);transition:transform .2s,border-color .2s;cursor:default}
+.tool-row:hover{transform:translateX(5px);border-color:rgba(200,98,42,0.3)}
+.tool-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0}
+.tool-name{font-size:0.88rem;font-weight:500;color:var(--brown)}
+.tool-desc{font-size:0.73rem;color:var(--light);margin-top:1px}
+
+#expertise{background:var(--cream)}
+.expertise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.exp-card{background:#fff;border-radius:20px;border:1px solid var(--border);padding:28px 24px;transition:transform .3s,box-shadow .3s;cursor:default;position:relative;overflow:hidden}
+.exp-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;opacity:0;transition:opacity .3s}
+.exp-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(61,43,31,0.1)}
+.exp-card:hover::after{opacity:1}
+.exp-card.c1::after{background:var(--accent)}
+.exp-card.c2::after{background:var(--accent2)}
+.exp-card.c3::after{background:var(--accent3)}
+.exp-card.c4::after{background:#9B59B6}
+.exp-card.c5::after{background:#E67E22}
+.exp-card.c6::after{background:#16A085}
+.exp-icon{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:14px}
+.exp-title{font-family:'Lora',serif;font-size:1rem;font-weight:600;color:var(--brown);margin-bottom:8px}
+.exp-desc{font-size:0.83rem;color:var(--mid);line-height:1.7}
+
+#experience{background:#fff}
+.exp-layout{display:grid;grid-template-columns:300px 1fr;gap:70px}
+.exp-sidebar-note{font-size:0.95rem;line-height:1.8;color:var(--mid);font-weight:300;margin-bottom:28px}
+.cert-box{background:var(--cream);border-radius:16px;border:1px solid var(--border);padding:20px}
+.cert-label{font-size:0.68rem;font-weight:600;color:var(--light);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:12px}
+.cert-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.cert-item:last-child{border-bottom:none;padding-bottom:0}
+.cert-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:5px}
+.cert-text{font-size:0.82rem;color:var(--brown);line-height:1.5}
+.timeline{position:relative}
+.timeline::before{content:'';position:absolute;left:18px;top:6px;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),transparent)}
+.tl-item{padding-left:52px;position:relative;margin-bottom:44px;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.tl-item.visible{opacity:1;transform:translateY(0)}
+.tl-dot{position:absolute;left:10px;top:5px;width:16px;height:16px;border-radius:50%;background:#fff;border:2px solid var(--accent)}
+.tl-dot.active{background:var(--accent)}
+.tl-date{font-size:0.72rem;font-weight:600;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+.tl-company{font-size:0.78rem;color:var(--light);margin-bottom:4px}
+.tl-role{font-family:'Lora',serif;font-size:1.15rem;font-weight:600;color:var(--brown);margin-bottom:10px}
+.tl-desc{font-size:0.88rem;color:var(--mid);line-height:1.75;max-width:520px}
+
+#projects{background:var(--cream)}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.proj-card{background:#fff;border-radius:20px;border:1px solid var(--border);overflow:hidden;transition:transform .3s,box-shadow .3s;cursor:default}
+.proj-card:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(61,43,31,0.1)}
+.proj-img{width:100%;height:185px;object-fit:cover;display:block}
+.proj-body{padding:22px}
+.proj-tag{display:inline-block;font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:50px;margin-bottom:10px}
+.proj-title{font-family:'Lora',serif;font-size:1rem;font-weight:600;color:var(--brown);margin-bottom:8px}
+.proj-desc{font-size:0.83rem;color:var(--mid);line-height:1.65}
+
+#contact{background:var(--brown)}
+#contact .sec-eyebrow{color:var(--light)}
+#contact .sec-title{color:#fff;margin-bottom:14px}
+.contact-lead{font-size:1rem;color:var(--light);line-height:1.8;margin-bottom:44px;font-weight:300}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:620px}
+.contact-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:20px;display:flex;align-items:center;gap:16px;text-decoration:none;transition:background .25s,transform .2s}
+.contact-card:hover{background:rgba(255,255,255,0.12);transform:translateY(-3px)}
+.cc-icon{width:44px;height:44px;border-radius:12px;background:rgba(200,98,42,0.25);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.cc-label{font-size:0.68rem;color:var(--light);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:3px}
+.cc-value{font-size:0.86rem;font-weight:500;color:#fff}
+
+footer{background:var(--brown);border-top:1px solid rgba(255,255,255,0.08);padding:28px 60px;display:flex;justify-content:space-between;align-items:center}
+footer p{font-size:0.78rem;color:var(--light)}
+footer span{color:var(--accent)}
+
+@keyframes riseUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:var(--light);border-radius:3px}
+
+@media(max-width:960px){
+  nav{padding:16px 24px}
+  .nav-links{display:none}
+  #hero{grid-template-columns:1fr;padding:100px 24px 60px}
+  .hero-card{display:none}
+  section{padding:64px 24px}
+  .about-grid,.exp-layout{grid-template-columns:1fr}
+  .expertise-grid,.projects-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+  footer{padding:24px;flex-direction:column;gap:8px;text-align:center}
+}
+@media(max-width:600px){
+  .expertise-grid,.projects-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">MUHAMMAD KAMRAN<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+
+  <div class="hero-left">
+    <div class="hero-greeting"><span class="wave">👋</span> Hey there, I'm</div>
+    <h1 class="hero-name">Muhammad<br><em>Kamran</em></h1>
+    <p class="hero-subtitle">Automation Specialist & AI Agent Developer</p>
+    <p class="hero-bio">I help agencies and entrepreneurs escape the chaos of manual work by building smart, automated systems — so they can focus on what actually grows their business.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-main">Let's work together</a>
+      <a href="#projects" class="btn-ghost">See my work</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <div class="avatar-wrap">MK</div>
+    <div class="card-name">Muhammad Kamran</div>
+    <div class="card-role">GHL Expert · Lahore, Pakistan</div>
+    <div class="card-stats">
+      <div class="cstat"><span class="cstat-num">2+</span><span class="cstat-label">Years</span></div>
+      <div class="cstat"><span class="cstat-num">50+</span><span class="cstat-label">Projects</span></div>
+      <div class="cstat"><span class="cstat-num">100%</span><span class="cstat-label">Satisfaction</span></div>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-o">GoHighLevel</span>
+      <span class="tag tag-g">Make.com</span>
+      <span class="tag tag-b">Zapier</span>
+      <span class="tag tag-o">Vapi.ai</span>
+      <span class="tag tag-g">ClickUp</span>
+      <span class="tag tag-b">ActiveCampaign</span>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="sec-eyebrow reveal">About me</div>
+  <div class="sec-title reveal">The person behind<br><em>the automations</em></div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>Hi! I'm Kamran — a <strong>GHL Expert and Automation Specialist</strong> based in Lahore, Pakistan. For the past 2 years, I've been obsessed with one thing: helping businesses stop doing things manually that machines can do better.</p>
+      <p>Whether you're an agency drowning in repetitive tasks, a startup trying to scale without hiring an army, or an entrepreneur juggling too many tools — I build the systems that connect everything and run automatically.</p>
+      <blockquote>"Automate the routine. Focus on the human."</blockquote>
+      <p>I hold a <strong>Bachelor's in Computer Science from COMSATS University</strong> (2024), which gives me the technical depth to build automations that are actually reliable — not just duct-taped together.</p>
+    </div>
+    <div class="reveal">
+      <div class="tools-label">My toolkit</div>
+      <div class="tools-list">
+        <div class="tool-row">
+          <div class="tool-icon" style="background:#FDF0E8">🚀</div>
+          <div><div class="tool-name">GoHighLevel (GHL)</div><div class="tool-desc">CRM, funnels & workflow automation</div></div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-icon" style="background:#E8F4EF">⚡</div>
+          <div><div class="tool-name">Zapier & Make.com</div><div class="tool-desc">Multi-app integration & automation</div></div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-icon" style="background:#E8F0F8">🤖</div>
+          <div><div class="tool-name">Vapi.ai</div><div class="tool-desc">AI voice agents & conversational flows</div></div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-icon" style="background:#F3EEF8">📋</div>
+          <div><div class="tool-name">ClickUp</div><div class="tool-desc">Project management & task automation</div></div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-icon" style="background:#E8F4EF">📧</div>
+          <div><div class="tool-name">ActiveCampaign</div><div class="tool-desc">Email marketing & CRM pipelines</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="expertise">
+  <div class="sec-eyebrow reveal">What I do</div>
+  <div class="sec-title reveal">Areas of <em>expertise</em></div>
+  <div class="expertise-grid">
+    <div class="exp-card c1 reveal">
+      <div class="exp-icon" style="background:#FDF0E8">🚀</div>
+      <div class="exp-title">GoHighLevel (GHL)</div>
+      <p class="exp-desc">Full CRM setup, workflow automation, lead nurturing, funnel optimization, and white-label agency configuration.</p>
+    </div>
+    <div class="exp-card c2 reveal" style="transition-delay:.08s">
+      <div class="exp-icon" style="background:#E8F4EF">⚡</div>
+      <div class="exp-title">Automation & Integration</div>
+      <p class="exp-desc">Advanced multi-step workflows with Zapier and Make.com that connect your apps and eliminate repetitive manual tasks.</p>
+    </div>
+    <div class="exp-card c3 reveal" style="transition-delay:.16s">
+      <div class="exp-icon" style="background:#E8F0F8">🤖</div>
+      <div class="exp-title">AI Agent Development</div>
+      <p class="exp-desc">Intelligent AI voice agents with Vapi.ai for automated calls, lead qualification, and 24/7 customer engagement.</p>
+    </div>
+    <div class="exp-card c4 reveal" style="transition-delay:.24s">
+      <div class="exp-icon" style="background:#F3EEF8">📋</div>
+      <div class="exp-title">ClickUp Expert</div>
+      <p class="exp-desc">Workflow design, process optimization, and task automation for teams — systems that people actually enjoy using.</p>
+    </div>
+    <div class="exp-card c5 reveal" style="transition-delay:.32s">
+      <div class="exp-icon" style="background:#FDF4E8">📧</div>
+      <div class="exp-title">ActiveCampaign</div>
+      <p class="exp-desc">Email marketing automation, CRM pipelines, segmentation, and drip campaigns that convert leads into loyal clients.</p>
+    </div>
+    <div class="exp-card c6 reveal" style="transition-delay:.4s">
+      <div class="exp-icon" style="background:#E8F5F3">📈</div>
+      <div class="exp-title">Digital Marketing</div>
+      <p class="exp-desc">Strategy, funnel building, lead generation, and campaign management across all major digital channels.</p>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="sec-eyebrow reveal">My journey</div>
+  <div class="sec-title reveal">Where I've been<br><em>& learned</em></div>
+  <div class="exp-layout">
+    <div class="reveal">
+      <p class="exp-sidebar-note">Every role I've taken has been about one thing — learning how to make businesses run smarter, not harder.</p>
+      <div class="cert-box">
+        <div class="cert-label">Certifications</div>
+        <div class="cert-item"><div class="cert-dot"></div><div class="cert-text">Go High Level Mastery Course</div></div>
+        <div class="cert-item"><div class="cert-dot"></div><div class="cert-text">GoHighLevel for Beginners</div></div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot active"></div>
+        <div class="tl-date">June 2024 — Present</div>
+        <div class="tl-company">Adapt Media Agency</div>
+        <div class="tl-role">GHL Expert & Automation Specialist</div>
+        <p class="tl-desc">Leading automation architecture and GHL implementation for agency clients. Building complex multi-step workflows, AI voice integrations, and CRM systems that drive real, measurable outcomes.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Early 2024</div>
+        <div class="tl-company">Adapt Media Agency</div>
+        <div class="tl-role">Marketing Specialist</div>
+        <p class="tl-desc">Digital marketing strategy, campaign management, and funnel optimization for agency clients across multiple industries. This is where my passion for automation truly began.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Sep 2020 — May 2024</div>
+        <div class="tl-company">COMSATS University Islamabad</div>
+        <div class="tl-role">BSc Computer Science</div>
+        <p class="tl-desc">Built a solid foundation in software systems, algorithms, and programming — the technical backbone that makes my automations reliable and scalable, not just clever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="sec-eyebrow reveal">Portfolio</div>
+  <div class="sec-title reveal">Real work,<br><em>real results</em></div>
+  <div class="projects-grid">
+    <div class="proj-card reveal">
+      <img src="GHL_Dashboard.png" alt="GHL Dashboard" class="proj-img">
+      <div class="proj-body">
+        <span class="proj-tag" style="background:#FDF0E8;color:var(--accent)">GoHighLevel · CRM</span>
+        <div class="proj-title">Agency CRM Full Setup</div>
+        <p class="proj-desc">End-to-end GHL CRM implementation with automated lead nurturing, pipeline management, and funnel optimization.</p>
+      </div>
+    </div>
+    <div class="proj-card reveal" style="transition-delay:.1s">
+      <img src="AI_Voice_Agent_System.jpg" alt="AI Voice Agent" class="proj-img">
+      <div class="proj-body">
+        <span class="proj-tag" style="background:#E8F0F8;color:var(--accent3)">Vapi.ai · AI Agents</span>
+        <div class="proj-title">AI Voice Agent System</div>
+        <p class="proj-desc">Intelligent voice agent for automated lead qualification and 24/7 appointment booking — achieving 100% call success.</p>
+      </div>
+    </div>
+    <div class="proj-card reveal" style="transition-delay:.2s">
+      <img src="Multi-App_Integration_Hub.png" alt="Multi-App Integration" class="proj-img">
+      <div class="proj-body">
+        <span class="proj-tag" style="background:#E8F4EF;color:var(--accent2)">Make.com · Integration</span>
+        <div class="proj-title">Multi-App Integration Hub</div>
+        <p class="proj-desc">Connecting Lemlist and HubSpot CRM — syncing email activities into tasks automatically, eliminating all manual data entry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="sec-eyebrow">Get in touch</div>
+  <div class="sec-title">Ready to <em>automate</em><br>your business?</div>
+  <p class="contact-lead reveal">Let's talk about how I can save you time, reduce errors, and help you scale smarter.<br>I'd love to hear about your project.</p>
+  <div class="contact-grid reveal">
+    <a href="mailto:kamranbaloch0625@gmail.com" class="contact-card">
+      <div class="cc-icon">✉️</div>
+      <div><div class="cc-label">Email</div><div class="cc-value">kamranbaloch0625@gmail.com</div></div>
+    </a>
+    <a href="https://www.linkedin.com/in/muhammadkamran-408312376" target="_blank" class="contact-card">
+      <div class="cc-icon">💼</div>
+      <div><div class="cc-label">LinkedIn</div><div class="cc-value">Connect with me</div></div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>Muhammad Kamran</span>. All rights reserved.</p>
+  <p>Built with care · Lahore, Pakistan 🇵🇰</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+const tlObs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'), i*150);
+  });
+},{threshold:0.15});
+document.querySelectorAll('.tl-item').forEach(el => tlObs.observe(el));
+
+window.addEventListener('scroll',()=>{
+  document.querySelector('nav').style.boxShadow = window.scrollY>30 ? '0 2px 20px rgba(61,43,31,0.08)' : 'none';
+});
+</script>
+</body>
+</html>
